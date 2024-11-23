@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Documentation - Notes Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .endpoint {
+      margin: 20px 0;
+      padding: 10px;
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+    }
+    code {
+      display: block;
+      background: #eee;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Notes Manager API Documentation</h1>
+    <p>Welcome to the Notes Manager API! Below is a list of all the available routes and their descriptions. Use this as a guide to interact with the API effectively.</p>
+
+    <h2>Base URL</h2>
+    <p>
+      <strong>Local:</strong> <code>http://localhost:5000/api</code><br>
+      <strong>Production:</strong> <code>https://notes-manager-backend-a6z3.onrender.com/api</code>
+    </p>
+
+    <h2>Routes</h2>
+
+    <!-- GET Notes -->
+    <div class="endpoint">
+      <h3>GET /notes</h3>
+      <p>Fetch all notes or filter them based on search query and category.</p>
+      <ul>
+        <li><strong>Parameters:</strong></li>
+        <ul>
+          <li><code>search</code>: (optional) Search query for filtering notes.</li>
+          <li><code>category</code>: (optional) Filter notes by category.</li>
+        </ul>
+        <li><strong>Response:</strong> List of notes.</li>
+      </ul>
+      <code>
+        Example: GET /notes?search=hello&category=others
+      </code>
+    </div>
+
+    <!-- POST Notes -->
+    <div class="endpoint">
+      <h3>POST /notes</h3>
+      <p>Create a new note.</p>
+      <ul>
+        <li><strong>Body:</strong></li>
+        <ul>
+          <li><code>title</code>: (string) The title of the note.</li>
+          <li><code>description</code>: (string) The content of the note.</li>
+          <li><code>category</code>: (string) The category of the note.</li>
+        </ul>
+        <li><strong>Response:</strong> The created note object.</li>
+      </ul>
+      <code>
+        Example: POST /notes<br>
+        Body: { "title": "New Note", "description": "Content", "category": "Work" }
+      </code>
+    </div>
+
+    <!-- GET Note by ID -->
+    <div class="endpoint">
+      <h3>GET /notes/:id</h3>
+      <p>Fetch a single note by its ID.</p>
+      <ul>
+        <li><strong>Response:</strong> Note object.</li>
+      </ul>
+      <code>
+        Example: GET /notes/6741861a96c4cd37a7ddb7b7
+      </code>
+    </div>
+
+    <!-- PUT Notes -->
+    <div class="endpoint">
+      <h3>PUT /notes/:id</h3>
+      <p>Update an existing note by its ID.</p>
+      <ul>
+        <li><strong>Body:</strong></li>
+        <ul>
+          <li><code>title</code>: (string, optional) The updated title.</li>
+          <li><code>description</code>: (string, optional) The updated content.</li>
+          <li><code>category</code>: (string, optional) The updated category.</li>
+        </ul>
+        <li><strong>Response:</strong> The updated note object.</li>
+      </ul>
+      <code>
+        Example: PUT /notes/6741861a96c4cd37a7ddb7b7<br>
+        Body: { "title": "Updated Note", "description": "Updated Content" }
+      </code>
+    </div>
+
+    <!-- DELETE Notes -->
+    <div class="endpoint">
+      <h3>DELETE /notes/:id</h3>
+      <p>Delete a note by its ID.</p>
+      <ul>
+        <li><strong>Response:</strong> Success message or status.</li>
+      </ul>
+      <code>
+        Example: DELETE /notes/6741861a96c4cd37a7ddb7b7
+      </code>
+    </div>
+
+    <h2>Setup Instructions</h2>
+    <p>Follow these steps to set up the project:</p>
+    <ol>
+      <li>Clone the repository.</li>
+      <li>Install dependencies: <code>npm install</code></li>
+      <li>Set environment variables for <code>MONGO_URI</code> and <code>PORT</code>.</li>
+      <li>Start the server: <code>npm start</code></li>
+    </ol>
+
+    <h2>Notes</h2>
+    <p>This application is built using Express.js for the backend and React for the frontend. For further details, check the project repository.</p>
+  </div>
+</body>
+</html>
